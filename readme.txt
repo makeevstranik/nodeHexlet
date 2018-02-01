@@ -2,6 +2,7 @@ solutions for tasks from hexlet nodejs developer course
 here explanation for each quizz and links to hexlet site
 
 001-treeUnfolder.js
+return unfolded tree as string
 https://ru.hexlet.io/courses/js-trees/lessons/traversal/theory_unit
 /*
                 *A
@@ -19,5 +20,9 @@ https://ru.hexlet.io/courses/js-trees/lessons/traversal/theory_unit
 Попробуйте открыть редактор на своем компьютере и самостоятельно реализуйте эту функцию без 
 подглядывания. 
 Так вы убедитесь в том, что поняли происходящее.*/
-#####################################################################################
-002-?
+#----------------------------------------------------------------------------------------------------------------------
+
+002-treePrinter.js
+hexlet variant of 001 task.
+Just print tree.
+#----------------------------------------------------------------------------------------------------------------------
