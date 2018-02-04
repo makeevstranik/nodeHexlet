@@ -8,8 +8,9 @@ const myMap = (fn, node) => {
   return fn(node);
 };
 export default myMap;
-/*
+
 // HOW TO USE --------------------------------------------------------------
+/*
 const tree = {
   children: [
     {
@@ -40,3 +41,4 @@ const tree = {
 const fnToMap = node => ({ ...node, name: node.name.toUpperCase() });
 const result = myMap(fnToMap, tree);
 console.log(JSON.stringify(result));
+*/
