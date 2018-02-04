@@ -1,16 +1,14 @@
 /**
  * Created by Makeev Evgeny on 03.02.18.
  */
-const myMap = (node, fn) => {
- // console.log(JSON.stringify(node));
-  console.log('node==', node);
-  console.log('--->', node.children);
-  console.log('fn---', fn);
+const myMap = (fn, node) => {
   if (node.type === 'directory') {
-    return { ...node, children: node.children.map(elem => myMap(elem, fn)) };
+    return { ...fn(node), children: node.children.map(elem => myMap(fn, elem)) };
   }
   return fn(node);
 };
+export default myMap;
+/*
 // HOW TO USE --------------------------------------------------------------
 const tree = {
   children: [
@@ -40,6 +38,6 @@ const tree = {
   type: 'directory',
 };
 const fnToMap = node => ({ ...node, name: node.name.toUpperCase() });
-const result = myMap(tree, fnToMap);
+const result = myMap(fnToMap, tree);
 //const result = myMap(n => ({ ...n, name: n.name.toUpperCase() }), tree);
 console.log(JSON.stringify(result));
