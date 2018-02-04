@@ -12,7 +12,7 @@ const treeFilter = (f, tree) => {
   } // условие для детей
   // map: для каждого элемента с приметить функцию treeFilter c аргументами (f, c) далее
   // возват map отфильтровать только не null
-  return [name, children.map(c => treeFilter(f, c)).filter(v => v)];
+  return [name, children.map(c => treeFilter(f, c)).filter(elem => elem)];
 };
 //export default treeFilter;
 
