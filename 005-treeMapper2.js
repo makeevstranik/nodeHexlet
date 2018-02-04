@@ -39,5 +39,4 @@ const tree = {
 };
 const fnToMap = node => ({ ...node, name: node.name.toUpperCase() });
 const result = myMap(fnToMap, tree);
-//const result = myMap(n => ({ ...n, name: n.name.toUpperCase() }), tree);
 console.log(JSON.stringify(result));
