@@ -28,4 +28,11 @@ const tree = {
   name: '/',
   type: 'directory',
 };
-export default tree;
+
+const treeArr = ['A', [
+  ['B', [['E'], ['F']]],
+  ['C'],
+  ['D', [['g'], ['j']]],
+]];
+
+export { tree, treeArr };
