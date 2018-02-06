@@ -5,9 +5,9 @@
 
 const treeReducer2 = (fn, tree, acc) => {
   const newAcc = fn(acc, tree);
-  if (!tree.children) return newAcc;
+  if (!tree.children) return acc;
   const fnToReduce = (innerAcc, elem) => treeReducer2(fn, elem, innerAcc);
-  return tree.children.reduce(fnToReduce, newAcc);
+  return tree.children.reduce(fnToReduce, acc);
 };
 export default treeReducer2;
 

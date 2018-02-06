@@ -18,25 +18,29 @@ const tree = mkdir('/', [
   mkfile('hosts', { size: 3500 }),
   mkfile('resolve', { size: 1000 }),
 ]);
-const treeReduce = (fn, tree, acc) => {
-  const newAcc = fn(acc, tree);
-  if (!tree.children) return newAcc;
-  const fnToReduce = (innerAcc, elem) => treeReduce(fn, elem, innerAcc);
-  console.log('--->', tree.children);
-  console.log('acc***', newAcc);
-  return tree.children.reduce(fnToReduce, newAcc);
-};
-
-const findFilesByName = (tree, strToFind) => {
-  const predicate = (acc, tree) => {
-    if (tree.type === 'file' && tree.name.includes(strToFind)) return [...acc, tree.name];
+const treeReduce = (fn, tree, acc, index = 1, arr = []) => {
+  if (fn(tree)) { // нет
+    acc = { accum: [...acc.accum, acc.path.join('/').slice(1) + '/' + tree.name], path: acc.path };
+  }
+  if (index === arr.length - 1 && tree.type === 'file')console.log('Delete from path --', acc.path.pop()); // псоледний из детей удаляет папку
+  if (!tree.children) { // нет
+    console.log('EXIT FROM', tree.type, '***', tree.name);
     return acc;
-  };
-  return treeReduce(predicate, tree, []);
+  }
+  const fnToReduce = (innerAcc, elem, index, arr) => treeReduce(fn, elem, innerAcc, index, arr);
+  acc.path.push(tree.name); //
+  console.log('TREE===>', tree.type, '---', tree.name);
+  console.log('children--->', tree.children);
+  console.log('acc***', acc);
+  return tree.children.reduce(fnToReduce, acc); // отдали детей и акк  на редус - пошла папка etc
+};
+const findFilesByName = (tree, strToFind) => {
+  const fnPredicate = tree => tree.type === 'file' && tree.name.includes(strToFind);
+  return treeReduce(fnPredicate, tree, { accum: [], path: [] }).accum;
 };
 
 console.log(JSON.stringify(tree));
-const result = findFilesByName(tree, 'ol');
+const result = findFilesByName(tree, 'co');
 console.log('RESULT    ', result);
 /*
 findFilesByName(tree, 'co');
