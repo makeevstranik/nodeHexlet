@@ -11,10 +11,10 @@ const myMap = (f, tree) => { // получили fnForMap  и дерево дл�
   return [newName, children.map(elem => myMap(f, elem))]; // here we construct the new tree having
   // the same structure. We map children with build function using myMap as callback
 };
-export default myMap;
+//export default myMap;
 
 // HOW TO USE ============================================================================
-/*
+
 const tree = ['A', [
   ['B', [['E'], ['F']]],
   ['C'],
