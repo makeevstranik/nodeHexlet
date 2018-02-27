@@ -199,3 +199,23 @@ convert([
 016-quickSort
 ПРАКТИКА  // https://ru.hexlet.io/challenges/js_sequences_sort
 Реализуйте алгоритм быстрой сортировки.
+# --------------------------------------------------------------------------
+
+017-sortDeps.js
+ПРАКТИКА https://ru.hexlet.io/challenges/js_trees_dependencies
+Реализуйте и экспортируйте по умолчанию функцию sortDeps, которая принимает на вход
+список зависимостей и возвращает список (массив) отсортированных узлов.
+
+Пример:
+const deps1 = {
+  mongo: [],
+  tzinfo: ['thread_safe'],
+  uglifier: ['execjs'],
+  execjs: ['thread_safe', 'json'],
+  redis: [],
+};
+console.log(sortDeps(deps1));
+// => ['mongo', 'thread_safe', 'tzinfo', 'json', 'execjs', 'uglifier', 'redis'];
+
+Независимые библиотеки и цепочки библиотек должны появляться в том порядке, в котором
+они встречались в исходной структуре.
