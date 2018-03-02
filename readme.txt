@@ -242,3 +242,13 @@ SingleTag.js
 Метод toString, который возвращает текстовое представление узла (html)
 на всю глубину.
 Обратите внимание на то что у SingleTag нет body и children
+#--------------------------------------------------------------------------
+
+019-classNode
+JS НАСЛЕДОВАНИЕ
+https://ru.hexlet.io/courses/js_prototypes/lessons/inheritance/exercise_unit#theory
+Node.js
+Реализуйте базовый класс Node таким чтобы он содержал в себе общую логику
+PairedTag.js, SingleTag.js
+Реализуйте типы тегов как подтипы типа Node.
+[РЕАЛИЗУЕМ В ОТДЕЛЬНОМ ФАЙЛЕ, МЕНЯЕМ КЛАССЫ В 018]
