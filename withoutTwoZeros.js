@@ -17,12 +17,9 @@ const makeCombinations = (num, arr) => {
 };
 
 const delEqualArrElements = (arr) => {
-  const fnForFilter = (elemToFind, ind) => {
-    const check = arr.slice(ind).find((el, indF, arrF) =>
+  const fnForFilter = (elemToFind, ind) =>
+    !arr.slice(ind).find((el, indF, arrF) =>
       compare(elemToFind, arrF[indF + 1]));
-    if (check === undefined) return true;
-    return false;
-  };
   return arr.filter(fnForFilter);
 };
 
@@ -35,15 +32,11 @@ const withoutTwoZeros = (zero, one) => {
     if (newArrZero.length === 0) return newAcc;
     const tempAcc = newAcc.reduce((acc, elemArr) =>
       [...acc, ...makeCombinations(workNum, elemArr)], []);
-    return iter(newArrZero.slice(1), tempAcc);
+    return iter(newArrZero.slice(1), delEqualArrElements(tempAcc));
   };
 
   const allCombinations = iter(arrZero, [arrOne]);
-  const filteredCombinations = delEqualArrElements(allCombinations);
- // console.log('RESULT\n', allCombinations);
- // console.log('FITERED\n', filteredCombinations);
-  return filteredCombinations.length;
+  return allCombinations.length;
 };
-
 
 console.log(withoutTwoZeros(2, 4));
