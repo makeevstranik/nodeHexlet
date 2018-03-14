@@ -3,6 +3,7 @@
  */
 import _path from 'path';
 import Tree from './024-fileSystemSimulator';
+import { Dir, File } from './026-fileSystemSimulator-dirFileStatsNodeLib';
 
 const getPathParts = (path) => {
   if (path === '/') return [];
@@ -16,10 +17,15 @@ const dividePath = (wholePath) => {
 
 class FileSystem {
   constructor() {
-    this.tree = new Tree('/', { type: 'dir' });
+    this.tree = new Tree('/', new Dir('/'));
   }
 
   // BEGIN (write your solution here)
+  statSync(filepath) {
+    const current = this.findNode(filepath);
+    return current.getMeta().getStats();
+  }
+
   isFile(path) {
     const node = this.findNode(_path.resolve(path));
     return node && node.meta.type === 'file';
@@ -28,7 +34,7 @@ class FileSystem {
   touchSync(path) {
     const [filePath, fileName] = dividePath(path);
     const node = this.findNode(filePath);
-    return node.addChild(fileName, { type: 'file' });
+    return node.addChild(fileName, new File(fileName));
   }
 
   isDirectory(path) {
@@ -39,7 +45,7 @@ class FileSystem {
   mkdirSync(path) {
     const [dirPath, dirName] = dividePath(path);
     const node = this.findNode(dirPath);
-    return node.addChild(dirName, { type: 'dir' });
+    return node.addChild(dirName, new Dir(dirName));
   }
   // END
 
@@ -57,3 +63,4 @@ file.touchSync('/myFolder/file.txt');
 console.log(file.isFile('/myFolder//////file.txt///'));
 console.log(file.isFile('/notExistFolder/no-file.txt'));
 console.log(file);
+console.log(file.statSync('/myFolder/file.txt').isFile());
