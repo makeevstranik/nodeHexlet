@@ -317,3 +317,76 @@ withoutTwoZeros(2, 2); // 3
 withoutTwoZeros(1, 1); // 2
 withoutTwoZeros(1, 3), // 4
 withoutTwoZeros(2, 4); // 10
+#---------------------------------------------------------------------------
+
+024-fileSystemSimulator
+hexlet-trees.js - имя файла в практическиом задании
+JS ОБРАБОТКА ОШИБОК
+ДЕРЕВЬЯ
+https://ru.hexlet.io/courses/js_errors/lessons/trees/theory_unit
+Tree.js
+Реализуйте недостающие части интерфейса типа Tree.
+
+hasChildren()
+hasChild(key)
+getParent()
+removeChild(key)
+getDeepChild(keys)
+getChildren()
+tree = new Tree('/');
+tree.addChild('var')
+  .addChild('lib')
+  .addChild('run');
+tree.addChild('etc');
+tree.addChild('home');
+
+// example: getDeepChild
+const subtree = tree.getDeepChild(['var', 'lib']);
+subtree.getKey(); // lib
+
+const parent = subtree.getParent();
+parent.getKey(); // var
+
+tree.removeChild('home'); // true
+tree.removeChild('nonexistentNode'); // false
+Подсказки
+метод getChildren возвращает массив нод
+
+#------------------------------------------------------------------------
+
+025-fileSystemSimulator-FileLib
+hexletFS.js - имя файла в практическиом задании
+JS ОБРАБОТКА ОШИБОК
+ФАЙЛОВАЯ СИСТЕМА
+
+Файловая система должна корректно обрабатывать пустые пути, делая внутри
+нормализацию. То есть, если ей передать путь ///etc/config//my///,
+то он транслируется в /etc/config/my.
+
+HexletFs.js
+Реализуйте следующие части интерфейса типа HexletFs.
+
+isDirectory(path)
+isFile(path)
+mkdirSync(path)
+touchSync(path) - создает пустой файл.
+
+Пример:
+files.isDirectory('/etc'); // false
+
+files.mkdirSync('/etc');
+files.isDirectory('/etc'); // true
+
+files.mkdirSync('/etc/nginx');
+files.isDirectory('/etc/nginx'); // true
+
+files.isFile('/file.txt'); // false
+
+files.touchSync('/file.txt');
+files.isFile('/file.txt'); // true
+
+Подсказки
+Реализуйте функцию getPathParts, которая разбивает путь на массив имен.
+Без этой функции не будет работать метод findNode, осуществляющий глубокий
+поиск файла (каталога) внутри текущего каталога.
+Для работы с путями используйте возможности встроенного в Node.js модуля Path.

@@ -5,6 +5,7 @@ const compare = (arr1, arr2) => {
   if (!arr1 || !arr2 || arr1.length !== arr2.length) return false;
   return !(arr1.join('') - arr2.join(''));
 };
+
 const isNumNear = (num, arr) =>
   arr.every((elem, ind) =>
     !(elem === num && elem === arr[ind + 1]));
@@ -36,7 +37,8 @@ const withoutTwoZeros = (zero, one) => {
   };
 
   const allCombinations = iter(arrZero, [arrOne]);
+  console.log(allCombinations);
   return allCombinations.length;
 };
 
-console.log(withoutTwoZeros(2, 4));
+console.log(withoutTwoZeros(1, 8));
