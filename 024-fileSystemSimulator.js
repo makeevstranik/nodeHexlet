@@ -20,7 +20,6 @@ class Tree {
   addChild(key, meta) {
     const child = new Tree(key, meta, this);
     this.children.set(key, child);
-
     return child;
   }
 
@@ -59,4 +58,5 @@ class Tree {
   // END
 }
 
-export default Tree;
+module.exports = Tree;
+// export default Tree;

@@ -1,7 +1,8 @@
 /**
  * Created by Makeev Evgeny on 14.03.18.
  */
-import Tree from './024-fileSystemSimulator';
+// import Tree from './024-fileSystemSimulator';
+
 
 class Stats {
   constructor(isFl, isDr) {
@@ -60,4 +61,6 @@ class File extends Node {
   }
 }
 
-export { Dir, File };
+module.exports.Dir = Dir;
+module.exports.File = File;
+// export { Dir, File };
