@@ -508,3 +508,41 @@ https://ru.hexlet.io/courses/js_async/lessons/timers/theory_unit
 Мои эксперементы с имитацией ф-ции map.
 Создан аналог хекслета но без рукурсии, на генераторе, работает несравнимо быстрее.
 Создан ассинхронный вариант на гернераторе без рекурсии.
+#--------------------------------------------------------------------------
+
+029-asyncFilter.js
+JS: Асинхронное программирование
+Таймеры
+https://ru.hexlet.io/courses/js_async/lessons/timers/theory_unit
+
+asyncFilter.js
+Реализуйте и экспортируйте по умолчанию функцию asyncFilter.
+
+const coll = [10, 53, true, false, '', NaN, 22];
+asyncFilter(coll, v => typeof v === 'number', result => {
+  console.log(result); // => [10, 53, NaN, 22]
+});
+Так как фильтр асинхронный, то вызов предиката для каждой функции должен выполняться
+после setTimeout.
+
+Подсказки
+Проверка на соответствие внутри фильтра должна быть нестрогой как и в обычном фильтре:
+[10, 53, true, false, '', NaN, 22].filter(v => v);
+// => [ 10, 53, true, 22 ]
+#--------------------------------------------------------------------------
+
+030-asyncFilter2.js
+JS: Асинхронное программирование
+Работа с ошибкми
+https://ru.hexlet.io/courses/js_async/lessons/errors/theory_unit
+
+Реализуйте и экспортируйте по умолчанию функцию filter.
+Отфильтрованная коллекция должна сохранять порядок элементов.
+
+filter(['file1', 'file2', 'file3'], (filePath, callback) => {
+  fs.access(filePath, err => {
+      callback(null, !err)
+  });
+}, (err, results) => {
+  // results now equals an array of the existing files
+});
