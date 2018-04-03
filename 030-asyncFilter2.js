@@ -1,3 +1,5 @@
+const noop = () => {};
+
 const once = (fn) => {
   let called = false;
 
